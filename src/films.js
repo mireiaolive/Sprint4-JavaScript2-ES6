@@ -11,23 +11,53 @@ function getMoviesFromDirector(array, director) {
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
+function moviesAverage(array) {
+  //second argument is 0, where accumulator is going to start
+  const sum = Number(
+    (array.reduce((accu, num) => accu + num.score, 0) / array.length).toFixed(2)
+  );
+  return sum;
+}
+
 function moviesAverageOfDirector(array, director) {
   let moviesDirector = getMoviesFromDirector(array, director);
-  const sum =
-    //second argument is 0, where accumulator is going to start
-    moviesDirector.reduce((accu, num) => accu + num.score, 0) /
-    moviesDirector.length;
-  return Number(sum.toFixed(2));
+  let result = moviesAverage(moviesDirector);
+  //returns a string, rounds it to two decimal w/ ".toFixed()"
+  //converts result string back to a number using the "Number()" constructor
+  return Number(result.toFixed(2));
 }
 
 // Exercise 4:  Alphabetic order by title
-function orderAlphabetically(array) {}
+function orderAlphabetically(array) {
+  let result = array.map((movie) => movie.title).sort();
+  if (result.length > 20) {
+    result.length = 20;
+  }
+  return result;
+}
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {}
+function orderByYear(array) {
+  let result = array
+    .map((movie) => ({ ...movie }))
+    // sort in an ascending order
+    .sort((p1, p2) =>
+      p1.year > p2.year
+        ? 1
+        : p1.year < p2.year
+        ? -1
+        : //should order movies with the same year by their title, alphabetically
+        p1.title > p2.title
+        ? 1
+        : p1.title < p2.title
+        ? -1
+        : 0
+    );
+  return result;
+}
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {}
+function moviesAverageByCategory(array, category) {}
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}
