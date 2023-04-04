@@ -57,7 +57,13 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory(array, category) {}
+//.includes() se utiliza con .filter() para filtrar una matriz de objetos
+// y obtener solo los cumplen con ciertos criterios
+function moviesAverageByCategory(array, category) {
+  const moviesByCat = array.filter((movie) => movie.genre.includes(category));
+  const result = moviesAverage(moviesByCat);
+  return result;
+}
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}
