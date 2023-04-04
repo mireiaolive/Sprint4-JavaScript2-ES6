@@ -5,6 +5,9 @@ function getAllDirectors(array) {
 }
 
 // Exercise 2: Get the films of a certain director
+//.filter() returns a new array called getFilms
+// takes a callback w/ 3 arguments and returns boolean
+// whether the element should be included in the new array
 function getMoviesFromDirector(array, director) {
   const getFilms = array.filter((movie) => movie.director === director);
   return getFilms;
