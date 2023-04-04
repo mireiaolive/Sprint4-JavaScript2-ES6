@@ -60,7 +60,9 @@ function orderByYear(array) {
 //.includes() se utiliza con .filter() para filtrar una matriz de objetos
 // y obtener solo los cumplen con ciertos criterios
 function moviesAverageByCategory(array, category) {
-  const moviesByCat = array.filter((movie) => movie.genre.includes(category));
+  const moviesByCat = array.filter(
+    (movie) => movie.genre.includes(category) && movie.score != ''
+  );
   const result = moviesAverage(moviesByCat);
   return result;
 }
