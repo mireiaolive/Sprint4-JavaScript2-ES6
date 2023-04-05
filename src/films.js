@@ -100,7 +100,7 @@ function hoursToMinutes(array) {
       duration: totalMinutes
     };
   });
-  console.log(result);
+  //console.log(result);
   return result;
 }
 
