@@ -71,10 +71,19 @@ function moviesAverageByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {}
+function hoursToMinutes(array) {}
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(array, year) {
+  let yearMovie = array.filter((array) => array.year == year);
+  //sorting movies by their score in descending order
+  //movie with the highest score will come first in the sorted array
+  let sortMovie = yearMovie.sort((a, b) => b.score - a.score);
+  let result = [sortMovie[0]];
+  //[] is used to create a new array called result that contains the first element of sortMovie.
+  //The resulting array result will have only one element, which is the highest scoring movie.
+  return result;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
