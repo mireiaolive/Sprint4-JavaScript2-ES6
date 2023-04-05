@@ -71,7 +71,38 @@ function moviesAverageByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes(array) {}
+function hoursToMinutes(array) {
+  // we create a new array
+  const result = array.map((movie) => {
+    // duration parts is split using the space character as a separator
+    const durationParts = movie.duration.split(' ');
+    // variable is initialized to 0 and will store the total duration in minutes
+    let totalMinutes = 0;
+
+    for (let i = 0; i < durationParts.length; i++) {
+      const part = durationParts[i];
+      // convert strign to intiger w/ radix 10
+      // the string being converted is the current duration part of the movie
+      const number = parseInt(part, 10);
+      // checks if it contains the string "h"
+      const isHour = part.includes('h');
+
+      if (isHour) {
+        // if the duration part is an hour, the number of hours is multiplied by 60
+        totalMinutes += number * 60;
+      } else {
+        totalMinutes += number;
+      }
+    }
+
+    return {
+      ...movie,
+      duration: totalMinutes
+    };
+  });
+  console.log(result);
+  return result;
+}
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(array, year) {
